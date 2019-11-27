@@ -5,7 +5,9 @@ CKAD Exam Notes and Tips
 
 - [ ] __Core Concepts - 13%__
   - [x] API Primitives
-  - [x] Create and Configure Basic Pods
+  - Basic Pods
+  - Replica Sets
+  - Deployments
 - [ ] __Configuration - 18%__
   - [x] Understand ConfigMaps
   - [x] Understand SecurityContexts
@@ -34,4 +36,4 @@ CKAD Exam Notes and Tips
 
 ## Notes
 
-[a relative link](coreconcepts.md)
+[core concepts](CoreConcepts/README.md#section)
