@@ -4,10 +4,11 @@ CKAD Exam Notes and Tips
 # Curriculam 
 
 - [ ] __Core Concepts - 13%__
-  - [x] API Primitives
+  - API Primitives
   - Basic Pods
   - Replica Sets
   - Deployments
+  - Namespaces
 - [ ] __Configuration - 18%__
   - [x] Understand ConfigMaps
   - [x] Understand SecurityContexts
@@ -37,3 +38,4 @@ CKAD Exam Notes and Tips
 ## Notes
 
 [core concepts](CoreConcepts/README.md#section)
+[configurations](Configurations/README.md#section)
