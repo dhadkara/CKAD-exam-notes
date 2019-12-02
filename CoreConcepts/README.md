@@ -103,7 +103,7 @@ $ k delete rs my-replicaset (delete replica sets)
 
 ### Deployments
 
-Deployment creats replica sets and pods.
+Deployment creates replica sets and pods.
 
 Deployment yaml
 ```

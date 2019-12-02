@@ -18,11 +18,9 @@ CKAD Exam Notes and Tips
   - Service Accounts
   - Taints and Tolerations
 - [ ] __Multi-Container Pods - 10%__
-  - [ ] Design Patterns: Ambassador, Adapter, Sidecar
-    - [ ] - Sidecar Pattern
-    - [ ] - Init Containers
+  - Design Patterns: Ambassador, Adapter, Sidecar
 - [ ] __Pod Design - 20%__
-  - [x] Using Labels, Selectors, and Annotations
+  - Labels, Selectors, and Annotations
   - [x] Understand Deployments and Rolling Updates
   - [x] Understand Deployment Rollbacks
   - [x] Understand Jobs and CronJobs
@@ -42,3 +40,4 @@ CKAD Exam Notes and Tips
 * [core concepts](CoreConcepts/README.md#section)
 * [configuration](Configurations/README.md#section)
 * [multi container pods](Multi-ContainerPods/README.md#section)
+* [pod design](PodDesign/README.md#section)

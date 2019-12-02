@@ -262,5 +262,11 @@ spec:
   ```
   k taint nodes <node-name> key=value:taint-effect
   k taint nodes node1 app=blue:NoSchedule
-
   ```
+  Remove the taint
+  ```
+  k taint nodes node1 app:NoSchedule-
+  ```
+  Tolerations are added to pod
+  ```
+  
