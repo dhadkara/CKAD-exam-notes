@@ -21,9 +21,8 @@ CKAD Exam Notes and Tips
   - Design Patterns: Ambassador, Adapter, Sidecar
 - [ ] __Pod Design - 20%__
   - Labels, Selectors, and Annotations
-  - [x] Understand Deployments and Rolling Updates
-  - [x] Understand Deployment Rollbacks
-  - [x] Understand Jobs and CronJobs
+  - Deployments and Rolling Updates
+  - Jobs and CronJobs
 - [ ] - __State Persistence - 8%__
   - [ ] - Understand PVCs for Storage
 - [ ] __Observability - 18%__
@@ -41,3 +40,5 @@ CKAD Exam Notes and Tips
 * [configuration](Configurations/README.md#section)
 * [multi container pods](Multi-ContainerPods/README.md#section)
 * [pod design](PodDesign/README.md#section)
+* [state persistence](StatePersistence/README.md#section)
+* [observability](Observability/README.md#section)
