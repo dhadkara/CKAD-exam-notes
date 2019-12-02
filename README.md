@@ -10,11 +10,13 @@ CKAD Exam Notes and Tips
   - Deployments
   - Namespaces
 - [ ] __Configuration - 18%__
-  - [x] Understand ConfigMaps
-  - [x] Understand SecurityContexts
-  - [x] Define App Resource Requirements
-  - [ ] Create and Consume Secrets
-  - [x] Understand Service Accounts
+  - Command and Arguments
+  - ConfigMaps
+  - Secrets
+  - SecurityContexts
+  - Resource Requirements
+  - Service Accounts
+  - Taints and Tolerations
 - [ ] __Multi-Container Pods - 10%__
   - [ ] Design Patterns: Ambassador, Adapter, Sidecar
     - [ ] - Sidecar Pattern
@@ -37,5 +39,6 @@ CKAD Exam Notes and Tips
 
 ## Notes
 
-[core concepts](CoreConcepts/README.md#section)
-[configurations](Configurations/README.md#section)
+* [core concepts](CoreConcepts/README.md#section)
+* [configuration](Configurations/README.md#section)
+* [multi container pods](Multi-ContainerPods/README.md#section)

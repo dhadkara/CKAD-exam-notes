@@ -153,7 +153,6 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: mysecret
-type: Opaque
 data:
   username: YWRtaW4=
   password: MWYyZDFlMmU2N2Rm
@@ -177,7 +176,6 @@ spec:
   - name: foo
     secret:
       secretName: mysecret
-      defaultMode: 256
 ```
 or as env variable
 
@@ -202,4 +200,67 @@ spec:
             name: mysecret
             key: password
   restartPolicy: Never
+  ```
+  ### Security Context
+
+
+
+  ### Resources
+
+  ### Service Accounts
+
+  Service Accounts are needed by external applications to access kube-api in k8s cluster
+  e.g. dashboard might show list of pods via kube-api needs access
+  To provide correct access to ServiceAccount use RBAC (Role based access control) but this is out of scope for CKAD exam
+
+  When service account is created, a secret is also created that has token to access the k8s apis and linked to service account
+  
+  Token can exported and used in third party application but if you are running an application on k8s itself then can mount that secret as volume.
+
+  FYI: There is a service account named default in every namespace that got mounted when any pod is created.
+
+  Service Account Commands
+
+  ```
+  k create serviceaccount/sa my-sa (create service account)
+  k get serviceaccount/sa my-sa (get service account)
+  k describe sa my-sa (describe service account)
+  ``` 
+  Service Account yaml - You can optionally decide not mount secret token on service account automatically by using automountServiceAccountToken property as false
+  ```
+  apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    name: my-dashboard
+  automountServiceAccountToken: false
+  ```
+
+  Using service account in pod
+  Note: Service Account is used at Pod level for all the containers
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: my-pod
+  spec:
+    containers:
+      - image: nginx
+        name: nginx
+    serviceAccount: my-dashboard
+  ```
+  using command
+  ```
+  k run nginx --image=nginx --restart=Never --serviceaccount=myuser -o yaml --dry-run > pod.yaml
+  k apply -f pod.yaml
+  ```
+  ### Taints and Tolerations
+
+  The taint has key key, value value, and taint effect NoSchedule. This means that no pod will be able to schedule onto node1 unless it has a matching toleration.
+
+  Add a taint to node 
+  Other values for taint-effect are NoSchedule, NoExecute and PreferNoSchedule
+  ```
+  k taint nodes <node-name> key=value:taint-effect
+  k taint nodes node1 app=blue:NoSchedule
+
   ```
