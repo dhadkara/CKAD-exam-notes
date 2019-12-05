@@ -24,15 +24,15 @@ CKAD Exam Notes and Tips
   - Deployments and Rolling Updates
   - Jobs and CronJobs
 - [ ] - __State Persistence - 8%__
-  - [ ] - Understand PVCs for Storage
+  - Volumes and Mounts
+  - Persistent Volume and Claims
 - [ ] __Observability - 18%__
-  - [x] Liveness and Readiness Probes
-  - [x] Understand Container Logging
-  - [ ] Understand Monitoring Application in Kubernetes
-  - [x] Understand Debugging in Kubernetes
-- [x] __Services and Networking - 13%__
-  - [x] Understand Services
-  - [x] Basic Network Policies
+  - Liveness and Readiness Probes
+  - Container Logging and Debugging
+- [ ] __Services and Networking - 13%__
+  - Services
+  - Ingerss
+  - Networking Policies
 
 ## Notes
 
@@ -42,3 +42,4 @@ CKAD Exam Notes and Tips
 * [pod design](PodDesign/README.md#section)
 * [state persistence](StatePersistence/README.md#section)
 * [observability](Observability/README.md#section)
+* [services and networking](ServicesAndNetworking/README.md#section)
