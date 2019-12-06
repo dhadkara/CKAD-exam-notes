@@ -202,10 +202,70 @@ spec:
   restartPolicy: Never
   ```
   ### Security Context
+  
+  Pod level security to run command as user and capabilities 
+  Capabilities can defined only at container level
 
+  security context with pod user yaml
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: security-context-demo-4
+  spec:
+    securityContext:
+      runAsUser: 1000
+    containers:
+      - name: sec-ctx-4
+        image: gcr.io/google-samples/node-hello:1.0
 
+  ```
+  security context with container user yaml
+
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: security-context-demo-4
+  spec:
+  containers:
+    - name: sec-ctx-4
+      image: gcr.io/google-samples/node-hello:1.0
+      securityContext:
+        runAsUser: 2000
+        capabilities:
+          add: ["NET_ADMIN", "SYS_TIME"]
+
+  ```
 
   ### Resources
+  
+  resources yaml
+
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: cpu-demo-2
+    namespace: cpu-example
+  spec:
+    containers:
+    - name: cpu-demo-ctr-2
+      image: vish/stress
+      resources:
+        limits:
+          memory: "2Gi"
+          cpu: 2
+        requests:
+          memory: "1Gi"
+          cpu: 1
+
+  ```
+  
+  commands
+  ```
+  k run nginx --image=nginx --restart=Never --requests='cpu=100m,memory=256Mi' --limits='cpu=200m,memory=512Mi'
+  ```
 
   ### Service Accounts
 
@@ -255,10 +315,16 @@ spec:
   ```
   ### Taints and Tolerations
 
-  The taint has key key, value value, and taint effect NoSchedule. This means that no pod will be able to schedule onto node1 unless it has a matching toleration.
+  The taint has key,value, and taint effect NoSchedule. This means that no pod will be able to schedule onto node1 unless it has a matching toleration.
+
+  Note: Pod with matching toleration can still be scheduled on other nodes if they don't any taints.
 
   Add a taint to node 
   Other values for taint-effect are NoSchedule, NoExecute and PreferNoSchedule
+  NoSchedule: Will not schedule the pod if toleration doesn't match
+  PreferNoSchedule: Will try best not to schedule pod if toleration doesn't match but no gurranty
+  NoExectue: Will not schedule new pods and also evict old pods doesn't match toleration
+
   ```
   k taint nodes <node-name> key=value:taint-effect
   k taint nodes node1 app=blue:NoSchedule
@@ -267,6 +333,86 @@ spec:
   ```
   k taint nodes node1 app:NoSchedule-
   ```
-  Tolerations are added to pod
+  Tolerations are added to pod (All tolerations values should be string "")
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: myapp-pod
+  spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+  tolerations:
+  - key: "app"
+    operator: "equal"
+    value: "blue"
+    effect: "NoSchedule"
+
   ```
   
+  Node Selectors
+
+  If you want to schedule a pod on perticular node 
+
+  Create a label on node and then assign nodeSelector as label value in pod
+
+  ```
+  k label nodes <node_name> <label_key>=<label_value>
+  k label nodes node1 size=Large
+  ```
+
+  pod yaml
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: myapp-pod
+  spec:
+    containers:
+    - name: nginx-container
+      image: nginx
+    nodeSelector:
+      size: Large
+  ```
+  Limitations: You can't provide advance expressions with node selectors like OR or NOT
+
+  Node Affinity
+  
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: myapp-pod
+  spec:
+    containers:
+    - name: nginx-container
+      image: nginx
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpression:
+            - key: size
+              operator: In
+              value:
+              - Large
+              
+  ```
+  or
+
+  ```
+          nodeSelectorTerms:
+          - matchExpression:
+            - key: size
+              operator: NotIn
+              value:
+              - Small
+  ```
+  NodeAffinityTypes
+
+  | __Types__  | __DuringScheduling__ | __DuringExecution__ | 
+  |-------------|------------|------------|
+  | requiredDuringSchedulingIgnoredDuringExecution | Required  |Ignored  |
+  | preferredDuringSchedulingIgnoredDuringExecution| Preferred |Ignored  |
+  | requiredDuringSchedulingRequiredDuringExecution| Required  |Required |
