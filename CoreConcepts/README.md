@@ -146,3 +146,25 @@ $ k describe deploy my-deployment (describe deployment)
 $ k delete deploy my-deployment (delete deployment)
 
 ```
+
+### Namespaces
+
+Namespaces provide a scope for resources and it needs to be unique within namespace. If no namespace is defined than resources are created in default namespace
+
+commands
+
+```
+k create namespace/ns myns (create a namespace)
+k get ns (list of namespaces)
+k get pods --namespace/-n dev (get pods in namespace dev)
+k get pods (get pods in default namespace)
+k get pods --all-namespaces (get pods in all namespaces)
+k config set-context $(k config current-context) -n dev (set context and namespace for it)
+
+```
+Resource quota
+
+commands
+```
+kubectl create quota myrq --hard=cpu=1,memory=1G,pods=2 --dry-run -o yaml
+```
