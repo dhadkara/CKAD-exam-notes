@@ -1,6 +1,48 @@
 # CKAD-exam-notes
 CKAD Exam Notes and Tips
 
+* Course I used for prepration: https://www.udemy.com/course/certified-kubernetes-application-developer/
+* Practice repo for prepration: https://github.com/dgkanatsios/CKAD-exercises
+* Book I referenced : https://www.manning.com/books/kubernetes-in-action
+* I used katacode heavily to practice : https://www.katacoda.com/courses/kubernetes/playground
+
+# Time saving tips
+[vim shortcuts](vimtricks.md#section)
+
+* Create shortcuts for kubectl commands
+```
+alias k=kubectl
+complete -F __start_kubectl k (auto completes k)
+```
+* Set context for env
+
+```
+kubectl config set-context <context of qn> --namespace <namespace of qn>
+kubectl config set-context $(kubectl config current-context) --namespace abc (switching context to ns abc)
+kubectl config view | grep namespace (verify namespace context)
+```
+* Kubectl explain command
+
+```
+k explain pod.spec
+k explain pod.spec.containers --recursive
+k explain pod.spec | grep -i nodeselector (to confirm the attribute)
+k explain pod.spec.nodeselector
+```
+* Grep from output
+
+```
+k describe pod <pod-name> | grep -i events -A 10
+k describe pod <pod-name> | grep -i events -A 10 > events.txt (output it to file)
+```
+The -A option essentially means 'after,' so you're saying give me the search results that start with 'events' and then the next 10 lines too.
+
+* Get root privileges if need to login into another node
+```
+sudo -i
+```
+* Bookmark kubernetes.io documentation important pages  
+
 # Curriculam 
 
 - [ ] __Core Concepts - 13%__
@@ -31,7 +73,7 @@ CKAD Exam Notes and Tips
   - Container Logging and Debugging
 - [ ] __Services and Networking - 13%__
   - Services
-  - Ingerss
+  - Ingress
   - Networking Policies
 
 ## Notes

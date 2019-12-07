@@ -40,6 +40,11 @@ k exec -it <pod_name> -c <container_name> -- command
 k exec -it mypod -c busybox2 -- ls
 ```
 
+## Logging architecture
+
+Read about logging architecture 
+
+https://kubernetes.io/docs/concepts/cluster-administration/logging/
 
 
 
