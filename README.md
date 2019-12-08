@@ -2,12 +2,14 @@
 CKAD Exam Notes and Tips
 
 * Course I used for prepration: https://www.udemy.com/course/certified-kubernetes-application-developer/
-* Practice repo for prepration: https://github.com/dgkanatsios/CKAD-exercises
+* Practice repo for prepration: https://github.com/dgkanatsios/CKAD-exercises (practice it 4-5 times)
+* Another practice repo: https://github.com/bmuschko/ckad-prep
 * Book I referenced : https://www.manning.com/books/kubernetes-in-action
 * I used katacode heavily to practice : https://www.katacoda.com/courses/kubernetes/playground
 
 # Time saving tips
-[vim shortcuts](vimtricks.md#section)
+
+* [vim shortcuts](vimtricks.md#section)
 
 * Create shortcuts for kubectl commands
 ```
@@ -29,19 +31,33 @@ k explain pod.spec.containers --recursive
 k explain pod.spec | grep -i nodeselector (to confirm the attribute)
 k explain pod.spec.nodeselector
 ```
+* Kubectl help command
+
+```
+k annotate --help | head -30
+```
+
 * Grep from output
 
 ```
 k describe pod <pod-name> | grep -i events -A 10
 k describe pod <pod-name> | grep -i events -A 10 > events.txt (output it to file)
+k describe pod <pod-name> | grep --context=10 Events: (output 10 lines above and below) 
 ```
 The -A option essentially means 'after,' so you're saying give me the search results that start with 'events' and then the next 10 lines too.
+
+```
+k describe pods | grep -C 10 "author=John Doe" (grep surrounding 10 line of annotation)
+k get pods -o yaml | grep -C 5 labels: (Print labels of all the pods in yaml output)
+```
 
 * Get root privileges if need to login into another node
 ```
 sudo -i
 ```
 * Bookmark kubernetes.io documentation important pages  
+
+* [bash commands](bashcommads.md#section)
 
 # Curriculam 
 

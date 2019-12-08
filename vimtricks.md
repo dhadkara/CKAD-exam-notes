@@ -32,3 +32,14 @@
 * go to line n - :n
 * go to word pod - /pod and then n
 
+## bash commands
+
+* To search command history in bash type 'Ctrl + r' 
+ This will open reverse search prompt. You can type in search word and it will show commands
+ If press enter and command will execute
+ If press right or left arrow you can edit the command
+
+* Ctrl + a => Return to the start of the command you’re typing
+* Ctrl + e => Go to the end of the command you’re typing
+* Ctrl + w => Delete the word / argument left of the cursor
+* Ctrl + l => Clear the screen
