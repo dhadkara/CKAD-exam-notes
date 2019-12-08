@@ -57,7 +57,7 @@ sudo -i
 ```
 * Bookmark kubernetes.io documentation important pages  
 
-* [bash commands](bashcommads.md#section)
+* [bash commands](bashcommands.md#section)
 
 # Curriculam 
 
