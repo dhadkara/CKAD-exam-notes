@@ -40,6 +40,9 @@ Service enables virtual ip to enable communication between frontend pods and bac
 
 Front end Pods -> service -> backend Pods -> service -> db Pods
 
+Note: To access service in another namespace use dns name as below
+servicename.namespace.svc.cluster.local
+
 ```
 apiVersion: v1
 kind: Service

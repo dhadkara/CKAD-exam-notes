@@ -240,6 +240,21 @@ spec:
 
   ### Resources
   
+  cpu
+
+  You can assing cpu as 1 (called 1 count of cpu) and as low as .1 that is equal to 100m (m stands for mili)
+  On mili you can go as low as 1m
+
+  memory
+
+  256 Mi = 256 Memibytes 
+  1 K = 1 Kilobytes = 1000 bytes
+  1 Ki = 1 Kikibyte = 1024 bytes
+  1 M = 1 Mebabyte
+  1 Mi = 1 Mebibyte 
+  1 G = 1 Gigabyte = 10^9 bytes
+  1 Gi = 1 Gibibyte
+
   resources yaml
 
   ```
