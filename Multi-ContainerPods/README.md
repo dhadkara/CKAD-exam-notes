@@ -7,8 +7,8 @@ multi container pod yaml
 ```
 apiVersion: v1
 kind: Pod
-metaData: 
-  name: myPod
+metadata: 
+  name: mypod
   labels:
     app: myapp
     type: frontend
